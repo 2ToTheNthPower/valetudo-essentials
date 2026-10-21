@@ -1,0 +1,150 @@
+{
+  "title": "Valetudo Essentials",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add a Valetudo vacuum",
+        "description": "Choose the vacuum entity created by Valetudo's MQTT discovery. You can fine-tune every automation after the integration has been added.",
+        "data": {
+          "vacuum_entity": "Robot vacuum"
+        }
+      }
+    },
+    "error": {
+      "entity_not_found": "That entity does not exist.",
+      "already_configured": "This vacuum is already configured."
+    },
+    "abort": {
+      "already_configured": "This vacuum is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Valetudo Essentials",
+        "description": "Choose a section to configure. Switches on the integration's device enable or disable each automation at runtime.",
+        "menu_options": {
+          "general": "General",
+          "away": "Clean when away",
+          "home": "Dock when home",
+          "quiet": "Quiet hours",
+          "schedule": "Weekly schedule",
+          "notifications": "Notifications",
+          "maintenance": "Maintenance",
+          "finish": "Save and close"
+        }
+      },
+      "general": {
+        "title": "General",
+        "description": "Shared settings used by the built-in automations.",
+        "data": {
+          "presence_entity": "Home presence entity",
+          "battery_min": "Minimum battery to start",
+          "fan_entity": "Fan speed entity (optional)",
+          "fan_speed": "Fan speed for automated starts",
+          "notify_service": "Default notification service (optional)",
+          "post_run_service": "Service to run after cleaning (optional)",
+          "auto_empty_entity": "Auto-empty button (optional)"
+        },
+        "data_description": {
+          "presence_entity": "Usually zone.home, but a person, device tracker, input_boolean, or binary_sensor also works. Zone states are treated as occupied when greater than zero.",
+          "fan_entity": "Valetudo exposes fan speed as a select entity. Leave empty to discover it automatically.",
+          "fan_speed": "Applied before every automated cleaning start.",
+          "notify_service": "For example notify.mobile_app_phone. Persistent notifications are used when empty or unavailable.",
+          "post_run_service": "For example script.after_vacuum. Leave empty to skip.",
+          "auto_empty_entity": "Leave empty to discover the Valetudo 'Trigger Auto Empty Dock' button automatically."
+        }
+      },
+      "away": {
+        "title": "Clean when away",
+        "description": "Starts cleaning after everybody leaves. The vacuum must be docked and have enough battery.",
+        "data": {
+          "away_delay": "Delay before starting"
+        }
+      },
+      "home": {
+        "title": "Dock when home",
+        "description": "What to do when the first person comes home during a run.",
+        "data": {
+          "home_action": "Action when somebody comes home"
+        }
+      },
+      "quiet": {
+        "title": "Quiet hours",
+        "description": "Starts and runs inside this window are paused or sent home. The window may cross midnight.",
+        "data": {
+          "quiet_start": "Quiet hours start",
+          "quiet_end": "Quiet hours end",
+          "quiet_action": "Action during quiet hours",
+          "quiet_resume": "Resume a run paused by quiet hours"
+        },
+        "data_description": {
+          "quiet_resume": "Only applies when quiet hours paused the vacuum. A run sent to the dock is not restarted."
+        }
+      },
+      "schedule": {
+        "title": "Weekly schedule",
+        "description": "Runs on the selected days at the selected time. Skipped if the vacuum is not docked or the battery is too low.",
+        "data": {
+          "schedule_days": "Days",
+          "schedule_time": "Time",
+          "schedule_only_when_away": "Only when everybody is away"
+        }
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Leave a service empty to use the default from the General section. If no service is available, a persistent notification is created instead.",
+        "data": {
+          "error_notify_service": "Error notification service",
+          "completion_notify_service": "Completion notification service"
+        }
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "description": "Checks consumable and dock supply sensors once a day.",
+        "data": {
+          "maintenance_sensors": "Sensors to check (optional)",
+          "maintenance_threshold": "Warn below",
+          "maintenance_time": "Daily check time"
+        },
+        "data_description": {
+          "maintenance_sensors": "Leave empty to auto-discover percentage sensors on the vacuum's device, such as brushes, filters, mop pads, dustbags, and dock tanks."
+        }
+      }
+    },
+    "error": {
+      "invalid_service": "Use the format domain.service, for example notify.mobile_app_phone.",
+      "same_times": "The start and end of quiet hours must be different.",
+      "no_days": "Select at least one day.",
+      "invalid_time": "Enter a valid time."
+    }
+  },
+  "entity": {
+    "switch": {
+      "clean_when_away": {
+        "name": "Clean when away"
+      },
+      "dock_when_home": {
+        "name": "Dock when home"
+      },
+      "quiet_hours": {
+        "name": "Quiet hours"
+      },
+      "schedule": {
+        "name": "Weekly schedule"
+      },
+      "error_notifications": {
+        "name": "Error notifications"
+      },
+      "completion_notifications": {
+        "name": "Completion notifications"
+      },
+      "maintenance_reminders": {
+        "name": "Maintenance reminders"
+      },
+      "auto_empty": {
+        "name": "Auto-empty after cleaning"
+      }
+    }
+  }
+}

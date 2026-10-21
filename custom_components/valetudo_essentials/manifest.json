@@ -1,0 +1,12 @@
+{
+  "domain": "valetudo_essentials",
+  "name": "Valetudo Essentials",
+  "codeowners": [
+    "@2ToTheNthPower"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/2ToTheNthPower/valetudo-essentials",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "requirements": []
+}

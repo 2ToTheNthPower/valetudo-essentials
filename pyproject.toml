@@ -1,0 +1,31 @@
+[project]
+name = "valetudo-essentials"
+version = "0.1.0"
+description = "Common-sense automations for Valetudo robot vacuums in Home Assistant"
+readme = "README.md"
+requires-python = ">=3.14.2"  # test tooling; integration code stays compatible with HA's Python
+license = { text = "MIT" }
+authors = [{ name = "Valetudo Essentials contributors" }]
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4",
+    "pytest-homeassistant-custom-component>=0.13.373",
+    "ruff>=0.16",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["custom_components.valetudo_essentials"]
